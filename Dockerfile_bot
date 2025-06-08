@@ -1,0 +1,20 @@
+FROM python:3.12
+
+WORKDIR /bot
+
+COPY bot/requirements.txt .
+
+#COPY /requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY bot .
+
+#RUN mkdir -p /cache
+#
+##COPY ../cache ./cache
+#
+#COPY ./cache /bot/cache
+
+RUN ls -la /bot  # Проверит какие файлы скопировались
+
+CMD ["python", "main.py"]
